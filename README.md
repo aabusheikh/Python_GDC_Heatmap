@@ -25,6 +25,10 @@ ___
 
     pip install pandas
     
+#### Matplotlib library
+
+    pip install matplotlib
+    
 #### Seaborn library
 
     pip install seaborn
