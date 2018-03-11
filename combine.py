@@ -30,9 +30,9 @@ def combine_corr_files():
                 logging.info("Found correlation file, processing ...\n")
 
                 df = pd.read_csv(corr_file_path, sep="\t", index_col=0)
-                code_dict = {key: value for (key, value) in [cc.split(".") for cc in df.index.values]}
+                ver_dict = {key: value for (key, value) in [cc.split(".") for cc in df.index.values]}
 
-                entries = [df.loc[".".join((gene_code, code_dict[gene_code]))][0] for gene_code in gene_list]
+                entries = [df.loc[".".join((gene_code, ver_dict[gene_code]))][0] for gene_code in gene_list]
                 cdf.insert(i, "%s-%s" % (cancer_type, gender), entries)
                 i += 1
 
