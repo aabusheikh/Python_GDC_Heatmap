@@ -32,7 +32,10 @@ def main():
     start_time = time.time()
     logging.info("Starting program ...\n")       
 
-    combine.run()
+    if "-hmo" in sys.argv:
+        logging.info("Detected 'heatmap only' command line argument, program will use pre-existing combined PTEN correlation file.\n")
+    else:
+        combine.run()
     heatmap.run()
 
     logging.info("Finished running program.")

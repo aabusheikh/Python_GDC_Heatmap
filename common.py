@@ -9,6 +9,12 @@ Common code (global variables, functions) that will be used by multiple modules 
 for configuration or functionality
 """
 
+# excluded cancer types
+SKIP_CTYPE = ["Nervous System"]
+
+# excluded gender
+SKIP_GENDER = ["unknown"]
+
 # PTEN code
 PTEN_GENE_CODE = "ENSG00000171862.8"
 
