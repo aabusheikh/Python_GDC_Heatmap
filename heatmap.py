@@ -19,6 +19,8 @@ def show_heatmap():
         df = pd.read_csv(combined_file_path, sep="\t", index_col=0)
         sbn.heatmap(df, cmap='RdYlGn', xticklabels=1, yticklabels=1)
         plt.subplots_adjust(bottom=0.21, top=0.98)
+        sbn.clustermap(df, cmap='RdYlGn', xticklabels=1, yticklabels=1, method="ward")
+        plt.subplots_adjust(bottom=0.21, top=0.98)
         plt.show()
     else:
         logging.warning("Combined PTEN correlation file not found.")
