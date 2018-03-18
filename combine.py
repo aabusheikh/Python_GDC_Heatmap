@@ -12,6 +12,7 @@ def combine_corr_files():
     combined_file_path = os.path.join(cmn.DL_DIR, cmn.PTEN_CORR_FNAME)
 
     n = 30
+    m = -30
     gdf = pd.read_csv(cmn.GENE_REF_FILE, sep="\t", index_col=0)
     gene_list = [l[0] for l in gdf.values[:n].tolist()]
     gene_names = [l for l in gdf.index[:n].tolist()]
@@ -39,7 +40,7 @@ def combine_corr_files():
                         df = pd.read_csv(corr_file_path, sep="\t", index_col=0)
                         ver_dict = {key: value for (key, value) in [cc.split(".") for cc in df.index.values]}
 
-                        entries = [abs(float(df.loc[".".join((gene_code, ver_dict[gene_code]))][0])) for gene_code in gene_list]
+                        entries = [abs(float(df.loc[".".join((gene_code, ver_dict[gene_code]))][0])) if gene_code in ver_dict else 0.0 for gene_code in gene_list]
                         cdf.insert(i, "%s-%s" % (cancer_type, gender), entries)
                         i += 1
 
